@@ -1,8 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-var dummyData = ["Find meaning of life", "Walk the bird",
-"Balloon acupuncture", "Steal free samples", "Count all stars"]
+var dummyData = [
+  {taskText: "Find meaning of life", completed: false},
+  {taskText: "Walk the bird", completed: true },
+  {taskText: "Balloon acupuncture", completed: false },
+  {taskText: "Steal free samples", completed: false},
+  {taskText: "Count all stars", completed: true},
+]
+
+class TodoApp extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      todos: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      todos: dummyData
+    });
+  }
+
+  render() {
+    return (
+      <TodoList todos={this.state.todos}/>
+    )
+  }
+}
 
 class TodoList extends React.Component {
   constructor(props){
@@ -14,7 +40,7 @@ class TodoList extends React.Component {
       <div>
         <InputLine />
         <ul>
-          {dummyData.map((item) => <Todo task={item} />)}
+          {this.props.todos.map((item) => <Todo task={item} />)}
         </ul>
       </div>
     )
@@ -27,8 +53,11 @@ class Todo extends React.Component {
   }
 
   render() {
+
+    var line = this.props.task.completed ? "line-through" : "none";
+    var todostyle = {textDecoration: line}
     return (
-      <li><button class="btn btn-primary">X</button>{this.props.task}</li>
+      <li style={todostyle}><button className="btn btn-danger">X</button>{this.props.task.taskText}</li>
     )
   }
 }
@@ -41,11 +70,11 @@ class InputLine extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" placeholder="Task"></input><button class="btn btn-primary" type="submit">Add</button>
+        <input type="text" placeholder="Task"></input><button className="btn btn-primary" type="submit">Add</button>
       </div>
     )
   }
 }
 
-ReactDOM.render(<TodoList />,
+ReactDOM.render(<TodoList todos={dummyData}/>,
   document.getElementById('root'));

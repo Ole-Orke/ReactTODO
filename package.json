@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "webpack": "webpack",
+    "dev": "webpack-dev-server --content-base build/"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,15 @@
   },
   "homepage": "https://github.com/Ole-Orke/ReactTODO#readme",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "webpack": "^2.7.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.1"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "reacttodo",
+  "version": "1.0.0",
+  "description": "React app for a simple TODO list",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ole-Orke/ReactTODO.git"
+  },
+  "author": "Ole Ørke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ole-Orke/ReactTODO/issues"
+  },
+  "homepage": "https://github.com/Ole-Orke/ReactTODO#readme",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
+}

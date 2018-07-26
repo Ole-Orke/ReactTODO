@@ -11,9 +11,12 @@ class TodoList extends React.Component {
 
   render() {
     return (
-      <ul>
-        {dummyData.map((item) => <Todo task={item} />)}
-      </ul>
+      <div>
+        <InputLine />
+        <ul>
+          {dummyData.map((item) => <Todo task={item} />)}
+        </ul>
+      </div>
     )
   }
 }
@@ -25,7 +28,21 @@ class Todo extends React.Component {
 
   render() {
     return (
-      <li><button>X</button>{this.props.task}</li>
+      <li><button class="btn btn-primary">X</button>{this.props.task}</li>
+    )
+  }
+}
+
+class InputLine extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" placeholder="Task"></input><button class="btn btn-primary" type="submit">Add</button>
+      </div>
     )
   }
 }

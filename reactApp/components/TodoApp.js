@@ -8,6 +8,7 @@ var dummyData = [
   {taskText: "Balloon acupuncture", completed: false },
   {taskText: "Steal free samples", completed: false},
   {taskText: "Count all stars", completed: true},
+  {taskText: "Octopus bone scan", completed: false},
 ];
 
 class TodoApp extends React.Component {
@@ -31,11 +32,50 @@ class TodoApp extends React.Component {
     });
   }
 
+  removeTodo(name){
+    let todos = this.state.todos;
+    console.log(name);
+    let i = 0;
+    let index = null;
+    todos.forEach((todo) => {
+      console.log(todo);
+      if (todo.taskText === name){
+        index = i;
+        return;
+      }
+      else {
+        i++;
+      }
+    });
+    console.log(index);
+    todos.splice(index, 1);
+    this.setState({
+      todos: todos
+    });
+  }
+
+  toggleTodo(name){
+    let todos = this.state.todos;
+    todos.forEach((todo) => {
+      if(todo.taskText === name){
+        if(todo.completed){
+          todo.completed = false;
+        }
+        else {
+          todo.completed = true;
+        }
+      }
+    });
+    this.setState({
+      todos: todos
+    });
+  }
+
   render() {
     return (
       <div>
       <InputLine submit={(task) => this.addTodo(task)}/>
-      <TodoList todos={this.state.todos}/>
+      <TodoList todoToggleClick={(name) => this.toggleTodo(name)} todoXClick={(index) => this.removeTodo(index)} todos={this.state.todos}/>
     </div>
     )
   }
